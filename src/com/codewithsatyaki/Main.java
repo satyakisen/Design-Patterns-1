@@ -1,25 +1,14 @@
 package com.codewithsatyaki;
 
-import com.codewithsatyaki.memento.Document.Document;
-import com.codewithsatyaki.memento.Document.History;
+import com.codewithsatyaki.state.DirectionService.BicyclingMode;
+import com.codewithsatyaki.state.DirectionService.DirectionService;
+import com.codewithsatyaki.state.DirectionService.DrivingMode;
 
 public class Main {
     public static void main(String[] args) {
-        Document document = new Document();
-        History history = new History();
-
-        document.setContent("Hello 1");
-        history.push(document.createState());
-
-        document.setFontName("a");
-        history.push(document.createState());
-
-        System.out.println(document);
-
-        document.restore(history.pop());
-        System.out.println(document);
-
-        document.restore(history.pop());
-        System.out.println(document);
+        var directionService = new DirectionService();
+        directionService.setTravelMode(new BicyclingMode());
+        directionService.getEta();
+        directionService.getDirection();
     }
 }
